@@ -109,6 +109,7 @@ class DataSourceOpenStack(openstack.SourceMixin, sources.DataSource):
             return False
 
         try:
+            (max_wait, timeout) = self._get_url_settings()
             results = util.log_time(LOG.debug,
                                     'Crawl of openstack metadata service',
                                     read_metadata_service,
